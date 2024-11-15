@@ -1,0 +1,231 @@
+React Notes
+==================================================================================================================================
+--> instal a new project with vite
+- npm create vite@latest
+- then give projectName
+- select framework --> React then typescript
+==================================================================================================================================
+
+--> After opening the project in vs code
+
+-npm i   --> to install required libraries
+- npm run dev to run the project 
+==================================================================================================================================
+
+------------------------Install and config Tailwind CSS
+
+- go to tailwind.com --> Get Started --> Framework Guides --> Vite
+- npm install -D tailwindcss postcss autoprefixer
+- npm tailwindcss init -p
+- Then copy the array of the content and put it inside tailwind.config.css
+
+	content: [
+		     "./index.html",
+		     "./src/**/*.{js,ts,jsx,tsx}",		
+		]
+ - Then copy the css directives to the index.css
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+
+
+==================================================================================================================================
+
+-- Delete app.css
+==================================================================================================================================
+
+-- Go to app.tsc and delete everything in this file 
+---------
+then write------------>  rafce  to create a react component
+==================================================================================================================================
+
+-------------------------- Snnipts to install
+-ESLint
+-ES7 + React/Redux/React-Native
+-Tailwind CSS IntelliSense
+-Prettier - Code Formater
+
+==================================================================================================================================
+--------------------------- install and config axios
+
+-- npm i axios
+==================================================================================================================================
+
+--------------- Get The URL Of the API
+-> Go to the main.tsx
+
+	axios.defaults.baseURL="https://localhost:7148/api/Tickets"
+
+==================================================================================================================================
+
+---------------------- Install and config rect router dom
+
+-npm i react-router-dom
+
+-- To use in main.tsx 
+-First import what you want from it --> import { BrowserRouter } from "react-router-dom";
+- Then use it
+	<BrowserRouter>
+    	    <App />
+        </BrowserRouter>,
+
+==================================================================================================================================
+----------Then in the src folder 
+- Create a folder for pages
+- crete a folder for router
+
+--------------------------- 
+-- In the router folder create a router file --> router.tsx
+-- Then, here, I wnt to create all routes I will need
+
+--- In the router file -- > rafce
+-Then,
+
+---- import {Routes, Route} from 'react-router-dom'
+ 
+==================================================================================================================================
+------------------------- Create Navbar Component 
+- First in the src folder 
+- Add a folder named components
+- Then the components folder add a folder named navbar
+- then create a file inside the navbar folder named Navbar.tsx
+- Then write rafce
+
+then import it in the app.tsx
+
+import React from 'react'
+import GlobalRouter from './router/router'
+import Navbar from './components/Navbar/navbar'
+
+const App = () => {
+  return (
+    <div className="bg-gray-100 min-h-screen">
+      <Navbar />    
+      <GlobalRouter />
+    </div>
+  )
+}
+
+export default App
+-------------------------------------------------------------------------
+
+
+
+==================================================================================================================================
+------------------------------------- Navbar.tsx file
+
+- First install a new package --> npm i react-icons
+-Then import
+	import { Link } from "react-router-dom";
+	import {AiOutlineHome} from 'react-icons/ai';
+	import {MdAirplaneTicket} from 'react-icons/md';
+
+
+	const menuItems = [
+  	{ id: 1, label: "Home", route: "/", icon: <AiOutlineHome /> },
+  	{ id: 2, label: "Tickets", route: "/tickets", icon: <MdAirplaneTicket /> },
+	];
+
+	const navbar = () => {
+  		return (
+    		   <div className="bg-gray-200 flex justify-between items-center p-2 md:p-4 lg:px-8 lg:py-4 text-2x1">
+      		     <div>
+        	        <Link to="/"> Tickettier </Link>
+      		     </div>
+      		     <div className="flex items-center gap-x-4">
+        	        {menuItems.map((item) => (
+                           <Link key={item.id} to= {item.route}>
+                                <span className="hidden md:block">{item.label}</span>
+                                <span className="block md:hid text-3x1" >{item.icon}</span>
+                           </Link>
+                       ))}
+                    </div>
+               </div>
+  	     )
+      };
+      
+      export default navbar;
+
+==================================================================================================================================
+------------------------------------- TicketIndexPage
+
+- In the pages folder add a new folder called tickets
+- Then, add a TicketsIndexPage.tsx file
+- Then the router.tsx add 
+  	<Route path='/tickets'>
+          <Route index element={<TicketIndexPage />} />
+        </Route>
+-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
